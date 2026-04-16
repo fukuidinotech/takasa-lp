@@ -35,5 +35,5 @@
 
 ## リポジトリ構成
 - `takasa-app/` → GitHub: `fukumone/takasa-app`（iOSアプリ本体、private）
-- `../docs/`   → GitHub: `fukumone/takasa-docs`（企画書・チケット・設計書、private）
+- `../docs/`   → **ローカルgitのみ**（GitHubには上げない。企画書・チケット・設計書）
 - `takasa-lp/` → GitHub: `fukumone/takasa-lp`（このリポジトリ、**public**）
