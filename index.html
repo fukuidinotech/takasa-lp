@@ -146,16 +146,41 @@
     color: var(--text-secondary);
   }
   footer a { margin-right: 16px; }
+
+  /* 言語切り替え */
+  .langbar { max-width: 720px; margin: 0 auto; padding-top: 16px; text-align: right; }
+  .langbar select {
+    background: var(--forest);
+    color: var(--text-secondary);
+    border: 1px solid var(--deep-green);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  .langbar select:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
 </style>
 </head>
 <body>
+<div class="langbar">
+  <select id="lang" aria-label="Language">
+    <option value="ja">日本語</option>
+    <option value="en">English</option>
+    <option value="zh-Hans">简体中文</option>
+    <option value="zh-Hant">繁體中文</option>
+    <option value="ko">한국어</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+  </select>
+</div>
 <main>
   <section class="hero">
     <p class="app-name">タカサ / TAKASA</p>
-    <h1>歩いて測る、<br>建物の高さ</h1>
-    <p class="lead">街で見上げたビルも、公園の木も。iPhoneのカメラと自分の歩数だけで、その場で高さがわかります。</p>
+    <h1><span data-i18n="h1a">歩いて測る、</span><br><span data-i18n="h1b">建物の高さ</span></h1>
+    <p class="lead" data-i18n="lead">街で見上げたビルも、公園の木も。iPhoneのカメラと自分の歩数だけで、その場で高さがわかります。</p>
     <!-- 公開後: <a class="badge" href="https://apps.apple.com/jp/app/id0000000000">App Store で見る</a> -->
-    <span class="badge" aria-disabled="true">App Store で近日公開</span>
+    <span class="badge" aria-disabled="true" data-i18n="badge">App Store で近日公開</span>
   </section>
 
   <!-- 測定の原理。オンボーディングのイラストと同じ図法 -->
@@ -188,49 +213,279 @@
     </g>
   </svg>
 
-  <h2>使い方は2ステップ</h2>
+  <h2 data-i18n="h2steps">使い方は2ステップ</h2>
   <ol class="steps">
     <li>
-      <strong>建物から離れる方向に歩く</strong>
-      <span>歩数を自動でカウントし、歩幅をかけて距離を割り出します。手入力にも対応。</span>
+      <strong data-i18n="s1t">建物から離れる方向に歩く</strong>
+      <span data-i18n="s1d">歩数を自動でカウントし、歩幅をかけて距離を割り出します。手入力にも対応。</span>
     </li>
     <li>
-      <strong>カメラを頂上に向けて照準を合わせる</strong>
-      <span>iPhoneの傾きから仰角を読み取り、三角比で高さを計算して表示します。</span>
+      <strong data-i18n="s2t">カメラを頂上に向けて照準を合わせる</strong>
+      <span data-i18n="s2d">iPhoneの傾きから仰角を読み取り、三角比で高さを計算して表示します。</span>
     </li>
   </ol>
 
-  <h2>LiDARでは測れない高さを測る</h2>
-  <p>iPhone純正の「計測」アプリはLiDARを使うため、届く距離はおよそ5メートルまで。ビルやマンションの高さには使えません。</p>
-  <p>タカサは距離と角度から計算する方式なので、数十メートルの建物にも対応します。特別なセンサーは要りません。</p>
+  <h2 data-i18n="h2lidar">LiDARでは測れない高さを測る</h2>
+  <p data-i18n="lidar1">iPhone純正の「計測」アプリはLiDARを使うため、届く距離はおよそ5メートルまで。ビルやマンションの高さには使えません。</p>
+  <p data-i18n="lidar2">タカサは距離と角度から計算する方式なので、数十メートルの建物にも対応します。特別なセンサーは要りません。</p>
 
-  <h2>画面</h2>
+  <h2 data-i18n="h2shots">画面</h2>
   <div class="shots">
-    <img src="images/01_onboarding1.png" alt="タカサの説明画面。木にiPhoneを向けて高さを測る図">
-    <img src="images/02_onboarding2.png" alt="距離dと傾きθから高さhを求める仕組みの説明画面">
-    <img src="images/06_distance.png" alt="歩数から距離を測る画面。歩数と距離が表示されている">
+    <img src="images/01_onboarding1.png" data-i18n-alt="alt1" alt="タカサの説明画面。木にiPhoneを向けて高さを測る図">
+    <img src="images/02_onboarding2.png" data-i18n-alt="alt2" alt="距離dと傾きθから高さhを求める仕組みの説明画面">
+    <img src="images/06_distance.png" data-i18n-alt="alt3" alt="歩数から距離を測る画面。歩数と距離が表示されている">
   </div>
 
-  <h2>特徴</h2>
+  <h2 data-i18n="h2features">特徴</h2>
   <ul class="features">
-    <li>歩数カウントで距離を自動計測（手入力にも対応）</li>
-    <li>身長から目線の高さを自動推定</li>
-    <li>メートル / フィート切り替え</li>
-    <li>日本語・英語・中国語・韓国語・スペイン語・フランス語に対応</li>
-    <li>アカウント登録不要。測定データを外部に送信しません</li>
+    <li data-i18n="f1">歩数カウントで距離を自動計測（手入力にも対応）</li>
+    <li data-i18n="f2">身長から目線の高さを自動推定</li>
+    <li data-i18n="f3">メートル / フィート切り替え</li>
+    <li data-i18n="f4">日本語・英語・中国語・韓国語・スペイン語・フランス語に対応</li>
+    <li data-i18n="f5">アカウント登録不要。測定データを外部に送信しません</li>
   </ul>
 
-  <h2>精度について</h2>
-  <p class="note">表示される高さはおおよその目安です。地面の傾斜、歩幅の個人差、iPhoneを構える高さの推定誤差により、実際の高さとは差が出ます。測量用途にはご利用いただけません。</p>
+  <h2 data-i18n="h2accuracy">精度について</h2>
+  <p class="note" data-i18n="note">表示される高さはおおよその目安です。地面の傾斜、歩幅の個人差、iPhoneを構える高さの推定誤差により、実際の高さとは差が出ます。測量用途にはご利用いただけません。</p>
 
   <footer>
     <p>
-      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="privacy.html" id="privacy-link" data-i18n="privacy">プライバシーポリシー</a>
       <a href="privacy-en.html">Privacy Policy (EN)</a>
-      <a href="mailto:fukuidinotech@gmail.com">お問い合わせ</a>
+      <a href="mailto:fukuidinotech@gmail.com" data-i18n="contact">お問い合わせ</a>
     </p>
-    <p>タカサ — 建物の高さを測るiOSアプリ</p>
+    <p data-i18n="foot">タカサ — 建物の高さを測るiOSアプリ</p>
   </footer>
 </main>
+
+<script>
+// 日本語は HTML に直接書いてあるので、それ以外の言語だけ辞書で差し替える。
+// JS が無効でも日本語のページとして読める。
+const I18N = {
+  "en": {
+    title: "Takasa - Measure height by walking",
+    desc: "Measure the height of buildings and trees with just your iPhone's camera and your own footsteps.",
+    h1a: "Measure any height", h1b: "just by walking",
+    lead: "That building you looked up at. That tree in the park. Your iPhone's camera and your own footsteps are all you need.",
+    badge: "Coming soon to the App Store",
+    h2steps: "Two steps", 
+    s1t: "Walk away from the target",
+    s1d: "Your steps are counted automatically and multiplied by your stride to get the distance. Manual entry also works.",
+    s2t: "Point the camera at the top",
+    s2d: "Takasa reads the tilt of your iPhone and calculates the height from the angle and distance.",
+    h2lidar: "Goes beyond LiDAR",
+    lidar1: "Apple's built-in Measure app relies on LiDAR, which only reaches about 5 meters. That is not enough for a building.",
+    lidar2: "Takasa calculates from distance and angle instead, so it handles structures tens of meters tall. No special sensor required.",
+    h2shots: "Screens", h2features: "Features", h2accuracy: "About accuracy",
+    f1: "Distance measured automatically from your step count (manual entry supported)",
+    f2: "Eye height estimated from your height",
+    f3: "Switch between meters and feet",
+    f4: "Available in English, Japanese, Chinese, Korean, Spanish and French",
+    f5: "No account needed. Measurements never leave your device",
+    note: "Results are approximate. Sloped ground, variation in stride length and the estimated height at which you hold your iPhone all affect the result. Not suitable for professional surveying.",
+    privacy: "Privacy Policy", contact: "Contact",
+    foot: "Takasa - an iOS app for measuring height",
+    alt1: "Takasa intro screen showing an iPhone pointed at a tree to measure its height",
+    alt2: "Screen explaining how height h is derived from distance d and tilt angle theta",
+    alt3: "Distance screen showing step count and measured distance"
+  },
+  "zh-Hans": {
+    title: "Takasa - 走几步，量高度",
+    desc: "只需 iPhone 的相机和你的脚步，就能测量建筑物和树木的高度。",
+    h1a: "走几步", h1b: "就知道有多高",
+    lead: "街上仰望的高楼，公园里的大树。只要 iPhone 的相机和你自己的脚步就够了。",
+    badge: "即将在 App Store 上架",
+    h2steps: "两个步骤",
+    s1t: "朝远离目标的方向走",
+    s1d: "自动统计步数，乘以步幅算出距离。也可以手动输入。",
+    s2t: "把相机对准顶端",
+    s2d: "读取 iPhone 的倾斜角度，用三角比算出高度。",
+    h2lidar: "测量 LiDAR 够不到的高度",
+    lidar1: "iPhone 自带的“测距仪”依靠 LiDAR，有效距离只有约 5 米，无法用于楼房。",
+    lidar2: "Takasa 通过距离和角度计算，因此能应对数十米高的建筑。不需要特殊传感器。",
+    h2shots: "界面", h2features: "特点", h2accuracy: "关于精度",
+    f1: "根据步数自动测距（也支持手动输入）",
+    f2: "根据身高自动推算视线高度",
+    f3: "米 / 英尺切换",
+    f4: "支持中文、日语、英语、韩语、西班牙语和法语",
+    f5: "无需注册账号，测量数据不会离开设备",
+    note: "显示的高度为大致数值。地面坡度、步幅的个人差异以及手持 iPhone 高度的推算误差都会带来偏差。不可用于专业测量。",
+    privacy: "隐私政策", contact: "联系我们",
+    foot: "Takasa - 测量高度的 iOS 应用",
+    alt1: "Takasa 说明界面，iPhone 对准树木测量高度",
+    alt2: "说明如何从距离 d 和倾角 θ 求出高度 h 的界面",
+    alt3: "通过步数测距的界面，显示步数与距离"
+  },
+  "zh-Hant": {
+    title: "Takasa - 走幾步，量高度",
+    desc: "只需 iPhone 的相機和你的腳步，就能測量建築物和樹木的高度。",
+    h1a: "走幾步", h1b: "就知道有多高",
+    lead: "街上仰望的高樓，公園裡的大樹。只要 iPhone 的相機和你自己的腳步就夠了。",
+    badge: "即將在 App Store 上架",
+    h2steps: "兩個步驟",
+    s1t: "朝遠離目標的方向走",
+    s1d: "自動統計步數，乘以步幅算出距離。也可以手動輸入。",
+    s2t: "把相機對準頂端",
+    s2d: "讀取 iPhone 的傾斜角度，用三角比算出高度。",
+    h2lidar: "測量 LiDAR 構不到的高度",
+    lidar1: "iPhone 內建的「測距儀」依靠 LiDAR，有效距離只有約 5 公尺，無法用於樓房。",
+    lidar2: "Takasa 透過距離和角度計算，因此能應對數十公尺高的建築。不需要特殊感測器。",
+    h2shots: "畫面", h2features: "特點", h2accuracy: "關於精度",
+    f1: "根據步數自動測距（也支援手動輸入）",
+    f2: "根據身高自動推算視線高度",
+    f3: "公尺 / 英尺切換",
+    f4: "支援中文、日語、英語、韓語、西班牙語和法語",
+    f5: "無需註冊帳號，測量資料不會離開裝置",
+    note: "顯示的高度為大致數值。地面坡度、步幅的個人差異以及手持 iPhone 高度的推算誤差都會帶來偏差。不可用於專業測量。",
+    privacy: "隱私政策", contact: "聯絡我們",
+    foot: "Takasa - 測量高度的 iOS 應用程式",
+    alt1: "Takasa 說明畫面，iPhone 對準樹木測量高度",
+    alt2: "說明如何從距離 d 和傾角 θ 求出高度 h 的畫面",
+    alt3: "透過步數測距的畫面，顯示步數與距離"
+  },
+  "ko": {
+    title: "Takasa - 걸어서 재는 높이",
+    desc: "iPhone 카메라와 걸음 수만으로 건물과 나무의 높이를 측정합니다.",
+    h1a: "걸어서 재는", h1b: "건물의 높이",
+    lead: "길에서 올려다본 빌딩도, 공원의 나무도. iPhone 카메라와 내 걸음만 있으면 됩니다.",
+    badge: "App Store 출시 예정",
+    h2steps: "두 단계면 끝",
+    s1t: "대상에서 멀어지는 방향으로 걷기",
+    s1d: "걸음 수를 자동으로 세고 보폭을 곱해 거리를 구합니다. 직접 입력도 가능합니다.",
+    s2t: "카메라를 꼭대기에 조준",
+    s2d: "iPhone의 기울기로 앙각을 읽어 삼각비로 높이를 계산합니다.",
+    h2lidar: "LiDAR로는 닿지 않는 높이까지",
+    lidar1: "iPhone 기본 '측정' 앱은 LiDAR를 사용해 약 5미터까지만 닿습니다. 건물 높이에는 쓸 수 없습니다.",
+    lidar2: "Takasa는 거리와 각도로 계산하므로 수십 미터 건물도 측정할 수 있습니다. 특별한 센서가 필요 없습니다.",
+    h2shots: "화면", h2features: "특징", h2accuracy: "정확도에 대하여",
+    f1: "걸음 수로 거리 자동 측정 (직접 입력도 지원)",
+    f2: "키에서 눈높이를 자동 추정",
+    f3: "미터 / 피트 전환",
+    f4: "한국어, 일본어, 영어, 중국어, 스페인어, 프랑스어 지원",
+    f5: "계정 등록 불필요. 측정 데이터를 외부로 보내지 않습니다",
+    note: "표시되는 높이는 대략적인 값입니다. 지면 경사, 보폭의 개인차, iPhone을 든 높이의 추정 오차로 실제 높이와 차이가 납니다. 전문 측량 용도로는 사용할 수 없습니다.",
+    privacy: "개인정보 처리방침", contact: "문의하기",
+    foot: "Takasa - 높이를 재는 iOS 앱",
+    alt1: "나무에 iPhone을 향해 높이를 재는 Takasa 안내 화면",
+    alt2: "거리 d와 기울기 θ로 높이 h를 구하는 원리 설명 화면",
+    alt3: "걸음 수로 거리를 재는 화면. 걸음 수와 거리가 표시되어 있다"
+  },
+  "es": {
+    title: "Takasa - Mide alturas caminando",
+    desc: "Mide la altura de edificios y árboles solo con la cámara de tu iPhone y tus propios pasos.",
+    h1a: "Mide la altura", h1b: "solo caminando",
+    lead: "Ese edificio que miraste desde abajo. Ese árbol del parque. Solo necesitas la cámara de tu iPhone y tus propios pasos.",
+    badge: "Próximamente en la App Store",
+    h2steps: "Dos pasos",
+    s1t: "Aléjate caminando del objetivo",
+    s1d: "Tus pasos se cuentan automáticamente y se multiplican por tu zancada para obtener la distancia. También puedes introducirla a mano.",
+    s2t: "Apunta la cámara a la cima",
+    s2d: "Takasa lee la inclinación del iPhone y calcula la altura a partir del ángulo y la distancia.",
+    h2lidar: "Más allá del LiDAR",
+    lidar1: "La app Medidas de Apple usa LiDAR, que solo alcanza unos 5 metros. No sirve para un edificio.",
+    lidar2: "Takasa calcula a partir de la distancia y el ángulo, así que funciona con estructuras de decenas de metros. No hace falta ningún sensor especial.",
+    h2shots: "Pantallas", h2features: "Características", h2accuracy: "Sobre la precisión",
+    f1: "Distancia medida automáticamente con el contador de pasos (o a mano)",
+    f2: "Altura de los ojos estimada a partir de tu estatura",
+    f3: "Cambia entre metros y pies",
+    f4: "Disponible en español, japonés, inglés, chino, coreano y francés",
+    f5: "Sin cuenta. Las mediciones nunca salen de tu dispositivo",
+    note: "Los resultados son aproximados. La inclinación del terreno, las diferencias de zancada y la altura estimada a la que sostienes el iPhone afectan al resultado. No sirve para topografía profesional.",
+    privacy: "Política de privacidad", contact: "Contacto",
+    foot: "Takasa: una app de iOS para medir alturas",
+    alt1: "Pantalla de introducción de Takasa: un iPhone apuntando a un árbol para medir su altura",
+    alt2: "Pantalla que explica cómo se obtiene la altura h a partir de la distancia d y el ángulo θ",
+    alt3: "Pantalla de distancia con el número de pasos y la distancia medida"
+  },
+  "fr": {
+    title: "Takasa - Mesurez une hauteur en marchant",
+    desc: "Mesurez la hauteur des bâtiments et des arbres avec la seule caméra de votre iPhone et vos propres pas.",
+    h1a: "Mesurez une hauteur", h1b: "rien qu'en marchant",
+    lead: "Cet immeuble que vous avez regardé d'en bas. Cet arbre du parc. La caméra de votre iPhone et vos propres pas suffisent.",
+    badge: "Bientôt sur l'App Store",
+    h2steps: "Deux étapes",
+    s1t: "Éloignez-vous de la cible en marchant",
+    s1d: "Vos pas sont comptés automatiquement puis multipliés par votre foulée pour obtenir la distance. La saisie manuelle est aussi possible.",
+    s2t: "Visez le sommet avec la caméra",
+    s2d: "Takasa lit l'inclinaison de l'iPhone et calcule la hauteur à partir de l'angle et de la distance.",
+    h2lidar: "Au-delà du LiDAR",
+    lidar1: "L'app Mesures d'Apple repose sur le LiDAR, qui ne porte qu'à environ 5 mètres. Insuffisant pour un bâtiment.",
+    lidar2: "Takasa calcule à partir de la distance et de l'angle : elle gère donc des structures de plusieurs dizaines de mètres. Aucun capteur particulier n'est nécessaire.",
+    h2shots: "Écrans", h2features: "Fonctions", h2accuracy: "À propos de la précision",
+    f1: "Distance mesurée automatiquement grâce au compteur de pas (saisie manuelle possible)",
+    f2: "Hauteur des yeux estimée à partir de votre taille",
+    f3: "Bascule entre mètres et pieds",
+    f4: "Disponible en français, japonais, anglais, chinois, coréen et espagnol",
+    f5: "Aucun compte requis. Les mesures ne quittent jamais votre appareil",
+    note: "Les résultats sont approximatifs. La pente du terrain, les différences de foulée et la hauteur estimée à laquelle vous tenez l'iPhone influent sur le résultat. Ne convient pas à un usage topographique professionnel.",
+    privacy: "Politique de confidentialité", contact: "Contact",
+    foot: "Takasa - une app iOS pour mesurer les hauteurs",
+    alt1: "Écran d'introduction de Takasa : un iPhone pointé vers un arbre pour en mesurer la hauteur",
+    alt2: "Écran expliquant comment la hauteur h se déduit de la distance d et de l'angle θ",
+    alt3: "Écran de distance affichant le nombre de pas et la distance mesurée"
+  }
+};
+
+const SUPPORTED = ["ja", "en", "zh-Hans", "zh-Hant", "ko", "es", "fr"];
+const JA = {};  // HTML に書かれている日本語を初期化時に退避する
+
+function pickLanguage() {
+  try {
+    const saved = localStorage.getItem("takasa-lang");
+    if (saved && SUPPORTED.includes(saved)) return saved;
+  } catch (e) { /* プライベートブラウズ等では読めない */ }
+  for (const raw of (navigator.languages || [navigator.language || "en"])) {
+    const tag = raw.toLowerCase();
+    if (tag.startsWith("ja")) return "ja";
+    if (tag.startsWith("ko")) return "ko";
+    if (tag.startsWith("es")) return "es";
+    if (tag.startsWith("fr")) return "fr";
+    if (tag.startsWith("zh")) {
+      return /hant|tw|hk|mo/.test(tag) ? "zh-Hant" : "zh-Hans";
+    }
+    if (tag.startsWith("en")) return "en";
+  }
+  return "en";
+}
+
+function apply(lang) {
+  const dict = lang === "ja" ? JA : I18N[lang];
+  if (!dict) return;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const v = dict[el.dataset.i18n];
+    if (v) el.textContent = v;
+  });
+  document.querySelectorAll("[data-i18n-alt]").forEach(el => {
+    const v = dict[el.dataset.i18nAlt];
+    if (v) el.alt = v;
+  });
+  if (dict.title) document.title = dict.title;
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta && dict.desc) meta.content = dict.desc;
+  document.documentElement.lang = lang;
+  // プライバシーポリシーは日英の2種類しかないので、日本語以外は英語版へ送る
+  const pl = document.getElementById("privacy-link");
+  if (pl) pl.href = lang === "ja" ? "privacy.html" : "privacy-en.html";
+}
+
+(function init() {
+  // 日本語の原文を退避
+  document.querySelectorAll("[data-i18n]").forEach(el => { JA[el.dataset.i18n] = el.textContent; });
+  document.querySelectorAll("[data-i18n-alt]").forEach(el => { JA[el.dataset.i18nAlt] = el.alt; });
+  JA.title = document.title;
+  const meta = document.querySelector('meta[name="description"]');
+  JA.desc = meta ? meta.content : "";
+
+  const select = document.getElementById("lang");
+  const lang = pickLanguage();
+  select.value = lang;
+  apply(lang);
+
+  select.addEventListener("change", () => {
+    apply(select.value);
+    try { localStorage.setItem("takasa-lang", select.value); } catch (e) { /* 保存できなくても表示は変わる */ }
+  });
+})();
+</script>
 </body>
 </html>
