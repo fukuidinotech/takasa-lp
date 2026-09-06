@@ -250,7 +250,8 @@
   <footer>
     <p>
       <a href="privacy.html" id="privacy-link" data-i18n="privacy">プライバシーポリシー</a>
-      <a href="privacy-en.html">Privacy Policy (EN)</a>
+      <a href="terms.html" id="terms-link" data-i18n="terms">利用規約</a>
+      <a href="company.html" id="company-link" data-i18n="company">運営者情報</a>
       <a href="mailto:fukuidinotech@gmail.com" data-i18n="contact">お問い合わせ</a>
     </p>
     <p data-i18n="foot">タカサ — 建物の高さを測るiOSアプリ</p>
@@ -283,7 +284,7 @@ const I18N = {
     f4: "Available in English, Japanese, Chinese, Korean, Spanish and French",
     f5: "No account needed. Measurements never leave your device",
     note: "Results are approximate. Sloped ground, variation in stride length and the estimated height at which you hold your iPhone all affect the result. Not suitable for professional surveying.",
-    privacy: "Privacy Policy", contact: "Contact",
+    privacy: "Privacy Policy", terms: "Terms of Use", company: "Operator Information", contact: "Contact",
     foot: "Takasa - an iOS app for measuring height",
     alt1: "Takasa intro screen showing an iPhone pointed at a tree to measure its height",
     alt2: "Screen explaining how height h is derived from distance d and tilt angle theta",
@@ -310,7 +311,7 @@ const I18N = {
     f4: "支持中文、日语、英语、韩语、西班牙语和法语",
     f5: "无需注册账号，测量数据不会离开设备",
     note: "显示的高度为大致数值。地面坡度、步幅的个人差异以及手持 iPhone 高度的推算误差都会带来偏差。不可用于专业测量。",
-    privacy: "隐私政策", contact: "联系我们",
+    privacy: "隐私政策", terms: "使用条款", company: "运营者信息", contact: "联系我们",
     foot: "Takasa - 测量高度的 iOS 应用",
     alt1: "Takasa 说明界面，iPhone 对准树木测量高度",
     alt2: "说明如何从距离 d 和倾角 θ 求出高度 h 的界面",
@@ -337,7 +338,7 @@ const I18N = {
     f4: "支援中文、日語、英語、韓語、西班牙語和法語",
     f5: "無需註冊帳號，測量資料不會離開裝置",
     note: "顯示的高度為大致數值。地面坡度、步幅的個人差異以及手持 iPhone 高度的推算誤差都會帶來偏差。不可用於專業測量。",
-    privacy: "隱私政策", contact: "聯絡我們",
+    privacy: "隱私政策", terms: "使用條款", company: "營運者資訊", contact: "聯絡我們",
     foot: "Takasa - 測量高度的 iOS 應用程式",
     alt1: "Takasa 說明畫面，iPhone 對準樹木測量高度",
     alt2: "說明如何從距離 d 和傾角 θ 求出高度 h 的畫面",
@@ -364,7 +365,7 @@ const I18N = {
     f4: "한국어, 일본어, 영어, 중국어, 스페인어, 프랑스어 지원",
     f5: "계정 등록 불필요. 측정 데이터를 외부로 보내지 않습니다",
     note: "표시되는 높이는 대략적인 값입니다. 지면 경사, 보폭의 개인차, iPhone을 든 높이의 추정 오차로 실제 높이와 차이가 납니다. 전문 측량 용도로는 사용할 수 없습니다.",
-    privacy: "개인정보 처리방침", contact: "문의하기",
+    privacy: "개인정보 처리방침", terms: "이용약관", company: "운영자 정보", contact: "문의하기",
     foot: "Takasa - 높이를 재는 iOS 앱",
     alt1: "나무에 iPhone을 향해 높이를 재는 Takasa 안내 화면",
     alt2: "거리 d와 기울기 θ로 높이 h를 구하는 원리 설명 화면",
@@ -391,7 +392,7 @@ const I18N = {
     f4: "Disponible en español, japonés, inglés, chino, coreano y francés",
     f5: "Sin cuenta. Las mediciones nunca salen de tu dispositivo",
     note: "Los resultados son aproximados. La inclinación del terreno, las diferencias de zancada y la altura estimada a la que sostienes el iPhone afectan al resultado. No sirve para topografía profesional.",
-    privacy: "Política de privacidad", contact: "Contacto",
+    privacy: "Política de privacidad", terms: "Términos de uso", company: "Información del operador", contact: "Contacto",
     foot: "Takasa: una app de iOS para medir alturas",
     alt1: "Pantalla de introducción de Takasa: un iPhone apuntando a un árbol para medir su altura",
     alt2: "Pantalla que explica cómo se obtiene la altura h a partir de la distancia d y el ángulo θ",
@@ -418,7 +419,7 @@ const I18N = {
     f4: "Disponible en français, japonais, anglais, chinois, coréen et espagnol",
     f5: "Aucun compte requis. Les mesures ne quittent jamais votre appareil",
     note: "Les résultats sont approximatifs. La pente du terrain, les différences de foulée et la hauteur estimée à laquelle vous tenez l'iPhone influent sur le résultat. Ne convient pas à un usage topographique professionnel.",
-    privacy: "Politique de confidentialité", contact: "Contact",
+    privacy: "Politique de confidentialité", terms: "Conditions d'utilisation", company: "Informations sur l'éditeur", contact: "Contact",
     foot: "Takasa - une app iOS pour mesurer les hauteurs",
     alt1: "Écran d'introduction de Takasa : un iPhone pointé vers un arbre pour en mesurer la hauteur",
     alt2: "Écran expliquant comment la hauteur h se déduit de la distance d et de l'angle θ",
@@ -463,9 +464,12 @@ function apply(lang) {
   const meta = document.querySelector('meta[name="description"]');
   if (meta && dict.desc) meta.content = dict.desc;
   document.documentElement.lang = lang;
-  // プライバシーポリシーは日英の2種類しかないので、日本語以外は英語版へ送る
-  const pl = document.getElementById("privacy-link");
-  if (pl) pl.href = lang === "ja" ? "privacy.html" : "privacy-en.html";
+  // 法的ページは日英の2種類しかないので、日本語以外は英語版へ送る
+  const legal = { "privacy-link": "privacy", "terms-link": "terms", "company-link": "company" };
+  for (const [id, base] of Object.entries(legal)) {
+    const el = document.getElementById(id);
+    if (el) el.href = lang === "ja" ? `${base}.html` : `${base}-en.html`;
+  }
 }
 
 (function init() {
