@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Takasa - Mesurez une hauteur en marchant</title>
+<meta name="description" content="Mesurez la hauteur des bâtiments et des arbres avec la seule caméra de votre iPhone et vos propres pas.">
+<meta property="og:title" content="Takasa - Mesurez une hauteur en marchant">
+<meta property="og:description" content="Mesurez la hauteur des bâtiments et des arbres avec la seule caméra de votre iPhone et vos propres pas.">
+<meta property="og:type" content="website">
+<!--chrome:alt-->
+<link rel="canonical" href="https://fukuidinotech.github.io/takasa-lp/fr/index.html">
+<link rel="alternate" hreflang="ja" href="https://fukuidinotech.github.io/takasa-lp/index.html">
+<link rel="alternate" hreflang="en" href="https://fukuidinotech.github.io/takasa-lp/en/index.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://fukuidinotech.github.io/takasa-lp/zh-Hans/index.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://fukuidinotech.github.io/takasa-lp/zh-Hant/index.html">
+<link rel="alternate" hreflang="ko" href="https://fukuidinotech.github.io/takasa-lp/ko/index.html">
+<link rel="alternate" hreflang="es" href="https://fukuidinotech.github.io/takasa-lp/es/index.html">
+<link rel="alternate" hreflang="fr" href="https://fukuidinotech.github.io/takasa-lp/fr/index.html">
+<link rel="alternate" hreflang="x-default" href="https://fukuidinotech.github.io/takasa-lp/en/index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css?v=3bc0a779">
+<!--/chrome:alt-->
+</head>
+<body>
+<!--chrome:lang-->
+<div class="langbar" role="navigation" aria-label="Choisir la langue">
+  <a lang="ja" hreflang="ja" href="../index.html">日本語</a>
+  <a lang="en" hreflang="en" href="../en/index.html">English</a>
+  <a lang="zh-Hans" hreflang="zh-Hans" href="../zh-Hans/index.html">简体中文</a>
+  <a lang="zh-Hant" hreflang="zh-Hant" href="../zh-Hant/index.html">繁體中文</a>
+  <a lang="ko" hreflang="ko" href="../ko/index.html">한국어</a>
+  <a lang="es" hreflang="es" href="../es/index.html">Español</a>
+  <a lang="fr" hreflang="fr" href="index.html" aria-current="true">Français</a>
+</div>
+<!--/chrome:lang-->
+<main>
+
+  <section class="hero">
+    <p class="app-name">タカサ / TAKASA</p>
+    <h1><span>Mesurez une hauteur</span><br><span>rien qu'en marchant</span></h1>
+    <p class="lead">Cet immeuble que vous avez regardé d'en bas. Cet arbre du parc. La caméra de votre iPhone et vos propres pas suffisent.</p>
+    <a class="badge" href="https://apps.apple.com/app/id6808973098">Télécharger dans l'App Store</a>
+  </section>
+
+  <!-- 測定の原理。オンボーディングのイラストと同じ図法 -->
+  <svg class="scene" width="640" height="240" viewBox="0 0 640 240" role="img"
+       aria-label="人がiPhoneを構え、距離dと仰角θから建物の高さhを求める図">
+    <g fill="none" stroke-linecap="round">
+      <line x1="20" y1="210" x2="620" y2="210" stroke="#5A7560" stroke-width="1"/>
+      <!-- 人とiPhone -->
+      <line x1="105" y1="210" x2="105" y2="140" stroke="#D4CBB3" stroke-width="1"/>
+      <circle cx="105" cy="132" r="8" stroke="#D4CBB3" stroke-width="1"/>
+      <rect x="112" y="120" width="18" height="26" rx="3" stroke="#B8A472" stroke-width="1.5"
+            transform="rotate(-22 121 133)"/>
+      <!-- 視線 -->
+      <line x1="130" y1="128" x2="470" y2="52" stroke="#B8A472" stroke-width="1.5" stroke-dasharray="5 5"/>
+      <!-- 水平線と角度 -->
+      <line x1="130" y1="128" x2="470" y2="128" stroke="#5A7560" stroke-width="1" stroke-dasharray="3 4"/>
+      <path d="M 168 128 A 38 38 0 0 0 165 119" stroke="#B8A472" stroke-width="1.2"/>
+      <!-- 建物 -->
+      <rect x="470" y="52" width="90" height="158" stroke="#6E8C74" stroke-width="1.5"/>
+      <line x1="470" y1="92" x2="560" y2="92" stroke="#4F6B55" stroke-width="1"/>
+      <line x1="470" y1="132" x2="560" y2="132" stroke="#4F6B55" stroke-width="1"/>
+      <line x1="470" y1="172" x2="560" y2="172" stroke="#4F6B55" stroke-width="1"/>
+      <!-- 高さの矢印 -->
+      <line x1="580" y1="52" x2="580" y2="128" stroke="#B8A472" stroke-width="1"/>
+    </g>
+    <g fill="#D4CBB3" font-family="IBM Plex Mono, monospace" font-size="14">
+      <text x="176" y="122">θ</text>
+      <text x="290" y="146">d</text>
+      <text x="592" y="96" fill="#B8A472">h</text>
+    </g>
+  </svg>
+
+  <h2>Deux étapes</h2>
+  <ol class="steps">
+    <li>
+      <strong>Éloignez-vous de la cible en marchant</strong>
+      <span>Vos pas sont comptés automatiquement puis multipliés par votre foulée pour obtenir la distance. La saisie manuelle est aussi possible.</span>
+    </li>
+    <li>
+      <strong>Visez le sommet avec la caméra</strong>
+      <span>Takasa lit l'inclinaison de l'iPhone et calcule la hauteur à partir de l'angle et de la distance.</span>
+    </li>
+  </ol>
+
+  <h2>Au-delà du LiDAR</h2>
+  <p>L'app Mesures d'Apple repose sur le LiDAR, qui ne porte qu'à environ 5 mètres. Insuffisant pour un bâtiment.</p>
+  <p>Takasa calcule à partir de la distance et de l'angle : elle gère donc des structures de plusieurs dizaines de mètres. Aucun capteur particulier n'est nécessaire.</p>
+
+  <h2>Écrans</h2>
+  <div class="shots">
+    <img src="../images/01_onboarding1.png" alt="Écran d'introduction de Takasa : un iPhone pointé vers un arbre pour en mesurer la hauteur">
+    <img src="../images/02_onboarding2.png" alt="Écran expliquant comment la hauteur h se déduit de la distance d et de l'angle θ">
+    <img src="../images/06_distance.png" alt="Écran de distance affichant le nombre de pas et la distance mesurée">
+  </div>
+
+  <h2>Fonctions</h2>
+  <ul class="features">
+    <li>Distance mesurée automatiquement grâce au compteur de pas (saisie manuelle possible)</li>
+    <li>Hauteur des yeux estimée à partir de votre taille</li>
+    <li>Bascule entre mètres et pieds</li>
+    <li>Disponible en français, japonais, anglais, chinois, coréen et espagnol</li>
+    <li>Aucun compte requis. Les mesures ne quittent jamais votre appareil</li>
+  </ul>
+
+  <h2>À propos de la précision</h2>
+  <p class="note">Les résultats sont approximatifs. La pente du terrain, les différences de foulée et la hauteur estimée à laquelle vous tenez l'iPhone influent sur le résultat. Ne convient pas à un usage topographique professionnel.</p>
+
+<!--chrome:foot-->
+<footer>
+  <p>
+    <a href="privacy.html">Politique de confidentialité</a>
+    <a href="terms.html">Conditions d'utilisation</a>
+    <a href="company.html">Informations sur l'éditeur</a>
+    <a href="mailto:fukuidinotech@gmail.com">Contact</a>
+  </p>
+  <p>Takasa — une app iOS pour mesurer les hauteurs</p>
+  <p>&copy; 2026 Toru Fukui</p>
+</footer>
+<!--/chrome:foot-->
+</main>
+</body>
+</html>

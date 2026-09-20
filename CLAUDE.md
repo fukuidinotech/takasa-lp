@@ -36,4 +36,28 @@
 ## リポジトリ構成
 - `takasa-app/` → GitHub: `fukumone/takasa-app`（iOSアプリ本体、private）
 - `../docs/`   → **ローカルgitのみ**（GitHubには上げない。企画書・チケット・設計書）
-- `takasa-lp/` → GitHub: `fukumone/takasa-lp`（このリポジトリ、**public**）
+- `takasa-lp/` → GitHub: `fukuidinotech/takasa-lp`（このリポジトリ、**public**。GitHub Pages で公開中）
+
+## 構成（2026-09-20〜）
+
+**7言語。ja は repo 直下、ほかは同名のサブディレクトリ。**
+公開済みの `…/takasa-lp/` を動かさないため、ja だけディレクトリを持たない。
+
+```
+takasa-lp/
+├── index.html privacy.html terms.html company.html   ← ja
+├── en/ zh-Hans/ zh-Hant/ ko/ es/ fr/                 ← 各4ページ（同じファイル名）
+├── site.css legal.css images/                        ← 全言語で共有（1つだけ置く）
+├── privacy-en.html terms-en.html company-en.html     ← 旧 URL の受け皿。消さない
+└── tools/i18n.py                                     ← 共通部分の正本
+```
+
+- `<head>` の alternate・言語切替・フッター・更新日は **`tools/i18n.py` が生成する**。
+  `<!--chrome:…-->` の目印のあいだは手で書かない。直したら `python3 tools/i18n.py`
+- 手で書くのは `<title>` / `<meta name="description">` / og と本文だけ
+- 更新日は `<p class="updated" data-updated="YYYY-MM-DD">` の日付だけ直せば7言語ぶん揃う
+- **JS は置かない。** 言語の自動振り分けも入れない（入口は hreflang と言語切替に任せる）
+- **文章の正本は日本語。** 直下を直してから6言語へ反映し、法務ページには
+  「相違があれば日本語版が優先」の注記（`.i18n-note`）を入れる
+- 言語を足す／減らすときは `tools/i18n.py` の `LANGS`、アプリの `SiteLinks.swift`、
+  `fastlane/metadata/<locale>/marketing_url.txt`（と `support_url.txt`）を同時に直す
