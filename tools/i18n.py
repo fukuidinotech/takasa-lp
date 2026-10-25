@@ -140,11 +140,10 @@ def block_alt(lang: str, page: str) -> str:
         lines.append(f'<link rel="alternate" hreflang="{other}" href="{url_for(other, page)}">')
     # 一致する言語が無い人には英語を出す
     lines.append(f'<link rel="alternate" hreflang="x-default" href="{url_for("en", page)}">')
-    lines.append('<link rel="preconnect" href="https://fonts.googleapis.com">')
-    lines.append('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>')
-    lines.append('<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600'
-                 '&display=swap" rel="stylesheet">')
-    css = "site.css" if page == "index.html" else "legal.css"
+    # フォントは fonts/ に置いて自前で配る。Google Fonts から読むと訪問者の IP が Google に渡り、
+    # EU では同意なしの送信として賠償を命じた判決がある（LG München 2022-01-20）。外から読み込まない
+    lines.append(f'<link rel="stylesheet" href="{asset(lang, "fonts/fonts.css")}">')
+    css ="site.css" if page == "index.html" else "legal.css"
     lines.append(f'<link rel="stylesheet" href="{asset(lang, css)}?v={css_version(css)}">')
     return "\n".join(lines)
 
