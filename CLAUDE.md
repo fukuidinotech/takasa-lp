@@ -40,15 +40,15 @@
 
 ## 構成（2026-09-20〜）
 
-**7言語。ja は repo 直下、ほかは同名のサブディレクトリ。**
-公開済みの `…/takasa-lp/` を動かさないため、ja だけディレクトリを持たない。
+**7言語。en は repo 直下、ほかは同名のサブディレクトリ**（2026-10-25 に直下を ja から en に替えた）。
 
 ```
 takasa-lp/
-├── index.html privacy.html terms.html company.html   ← ja
-├── en/ zh-Hans/ zh-Hant/ ko/ es/ fr/                 ← 各4ページ（同じファイル名）
+├── index.html privacy.html terms.html company.html   ← en
+├── ja/ zh-Hans/ zh-Hant/ ko/ es/ fr/                 ← 各4ページ（同じファイル名）
 ├── site.css legal.css images/                        ← 全言語で共有（1つだけ置く）
-├── privacy-en.html terms-en.html company-en.html     ← 旧 URL の受け皿。消さない
+├── en/                                               ← 旧 URL の転送ページ。消さない
+├── privacy-en.html terms-en.html company-en.html     ← 旧 URL の受け皿（直下の英語へ送る）。消さない
 └── tools/i18n.py                                     ← 共通部分の正本
 ```
 
@@ -57,7 +57,7 @@ takasa-lp/
 - 手で書くのは `<title>` / `<meta name="description">` / og と本文だけ
 - 更新日は `<p class="updated" data-updated="YYYY-MM-DD">` の日付だけ直せば7言語ぶん揃う
 - **JS は置かない。** 言語の自動振り分けも入れない（入口は hreflang と言語切替に任せる）
-- **文章の正本は日本語。** 直下を直してから6言語へ反映し、法務ページには
+- **文章の正本は日本語。** `ja/` を直してから6言語へ反映し、法務ページには
   「相違があれば日本語版が優先」の注記（`.i18n-note`）を入れる
 - 言語を足す／減らすときは `tools/i18n.py` の `LANGS`、アプリの `SiteLinks.swift`、
   `fastlane/metadata/<locale>/marketing_url.txt`（と `support_url.txt`）を同時に直す

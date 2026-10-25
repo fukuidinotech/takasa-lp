@@ -17,9 +17,7 @@
 </p>
 
 <p align="center">
-  <a href="https://fukuidinotech.github.io/takasa-lp/">日本語</a>
-  ·
-  <a href="https://fukuidinotech.github.io/takasa-lp/en/">English</a>
+  <a href="https://fukuidinotech.github.io/takasa-lp/ja/">日本語</a>
   ·
   <a href="https://fukuidinotech.github.io/takasa-lp/zh-Hans/">简体中文</a>
   ·

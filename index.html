@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>タカサ - 歩いて測る、建物の高さ</title>
-<meta name="description" content="iPhoneのカメラと歩数だけで、建物や木の高さをその場で測れるアプリ。LiDARの5m制限を超えて、数十メートルの建物にも対応します。">
-<meta property="og:title" content="タカサ - 歩いて測る、建物の高さ">
-<meta property="og:description" content="iPhoneのカメラと歩数だけで、建物や木の高さをその場で測れるアプリ。LiDARの5m制限を超えて、数十メートルの建物にも対応します。">
+<title>Takasa - Measure height by walking</title>
+<meta name="description" content="Measure the height of buildings and trees with just your iPhone's camera and your own footsteps.">
+<meta property="og:title" content="Takasa - Measure height by walking">
+<meta property="og:description" content="Measure the height of buildings and trees with just your iPhone's camera and your own footsteps.">
 <meta property="og:type" content="website">
 <!--chrome:alt-->
 <link rel="canonical" href="https://fukuidinotech.github.io/takasa-lp/index.html">
-<link rel="alternate" hreflang="ja" href="https://fukuidinotech.github.io/takasa-lp/index.html">
-<link rel="alternate" hreflang="en" href="https://fukuidinotech.github.io/takasa-lp/en/index.html">
+<link rel="alternate" hreflang="en" href="https://fukuidinotech.github.io/takasa-lp/index.html">
+<link rel="alternate" hreflang="ja" href="https://fukuidinotech.github.io/takasa-lp/ja/index.html">
 <link rel="alternate" hreflang="zh-Hans" href="https://fukuidinotech.github.io/takasa-lp/zh-Hans/index.html">
 <link rel="alternate" hreflang="zh-Hant" href="https://fukuidinotech.github.io/takasa-lp/zh-Hant/index.html">
 <link rel="alternate" hreflang="ko" href="https://fukuidinotech.github.io/takasa-lp/ko/index.html">
 <link rel="alternate" hreflang="es" href="https://fukuidinotech.github.io/takasa-lp/es/index.html">
 <link rel="alternate" hreflang="fr" href="https://fukuidinotech.github.io/takasa-lp/fr/index.html">
-<link rel="alternate" hreflang="x-default" href="https://fukuidinotech.github.io/takasa-lp/en/index.html">
+<link rel="alternate" hreflang="x-default" href="https://fukuidinotech.github.io/takasa-lp/index.html">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="site.css?v=3bc0a779">
 <!--/chrome:alt-->
 </head>
 <body>
 <!--chrome:lang-->
-<div class="langbar" role="navigation" aria-label="言語を選ぶ">
-  <a lang="ja" hreflang="ja" href="index.html" aria-current="true">日本語</a>
-  <a lang="en" hreflang="en" href="en/index.html">English</a>
+<div class="langbar" role="navigation" aria-label="Choose a language">
+  <a lang="en" hreflang="en" href="index.html" aria-current="true">English</a>
+  <a lang="ja" hreflang="ja" href="ja/index.html">日本語</a>
   <a lang="zh-Hans" hreflang="zh-Hans" href="zh-Hans/index.html">简体中文</a>
   <a lang="zh-Hant" hreflang="zh-Hant" href="zh-Hant/index.html">繁體中文</a>
   <a lang="ko" hreflang="ko" href="ko/index.html">한국어</a>
@@ -38,9 +38,9 @@
 
   <section class="hero">
     <p class="app-name">タカサ / TAKASA</p>
-    <h1><span>歩いて測る、</span><br><span>建物の高さ</span></h1>
-    <p class="lead">街で見上げたビルも、公園の木も。iPhoneのカメラと自分の歩数だけで、その場で高さがわかります。</p>
-    <a class="badge" href="https://apps.apple.com/jp/app/id6808973098">App Store で見る</a>
+    <h1><span>Measure any height</span><br><span>just by walking</span></h1>
+    <p class="lead">That building you looked up at. That tree in the park. Your iPhone's camera and your own footsteps are all you need.</p>
+    <a class="badge" href="https://apps.apple.com/app/id6808973098">Download on the App Store</a>
   </section>
 
   <!-- 測定の原理。オンボーディングのイラストと同じ図法 -->
@@ -73,50 +73,50 @@
     </g>
   </svg>
 
-  <h2>使い方は2ステップ</h2>
+  <h2>Two steps</h2>
   <ol class="steps">
     <li>
-      <strong>建物から離れる方向に歩く</strong>
-      <span>歩数を自動でカウントし、歩幅をかけて距離を割り出します。手入力にも対応。</span>
+      <strong>Walk away from the target</strong>
+      <span>Your steps are counted automatically and multiplied by your stride to get the distance. Manual entry also works.</span>
     </li>
     <li>
-      <strong>カメラを頂上に向けて照準を合わせる</strong>
-      <span>iPhoneの傾きから仰角を読み取り、三角比で高さを計算して表示します。</span>
+      <strong>Point the camera at the top</strong>
+      <span>Takasa reads the tilt of your iPhone and calculates the height from the angle and distance.</span>
     </li>
   </ol>
 
-  <h2>LiDARでは測れない高さを測る</h2>
-  <p>iPhone純正の「計測」アプリはLiDARを使うため、届く距離はおよそ5メートルまで。ビルやマンションの高さには使えません。</p>
-  <p>タカサは距離と角度から計算する方式なので、数十メートルの建物にも対応します。特別なセンサーは要りません。</p>
+  <h2>Goes beyond LiDAR</h2>
+  <p>Apple's built-in Measure app relies on LiDAR, which only reaches about 5 meters. That is not enough for a building.</p>
+  <p>Takasa calculates from distance and angle instead, so it handles structures tens of meters tall. No special sensor required.</p>
 
-  <h2>画面</h2>
+  <h2>Screens</h2>
   <div class="shots">
-    <img src="images/01_onboarding1.png" alt="タカサの説明画面。木にiPhoneを向けて高さを測る図">
-    <img src="images/02_onboarding2.png" alt="距離dと傾きθから高さhを求める仕組みの説明画面">
-    <img src="images/06_distance.png" alt="歩数から距離を測る画面。歩数と距離が表示されている">
+    <img src="images/01_onboarding1.png" alt="Takasa intro screen showing an iPhone pointed at a tree to measure its height">
+    <img src="images/02_onboarding2.png" alt="Screen explaining how height h is derived from distance d and tilt angle theta">
+    <img src="images/06_distance.png" alt="Distance screen showing step count and measured distance">
   </div>
 
-  <h2>特徴</h2>
+  <h2>Features</h2>
   <ul class="features">
-    <li>歩数カウントで距離を自動計測（手入力にも対応）</li>
-    <li>身長から目線の高さを自動推定</li>
-    <li>メートル / フィート切り替え</li>
-    <li>日本語・英語・中国語・韓国語・スペイン語・フランス語に対応</li>
-    <li>アカウント登録不要。測定データを外部に送信しません</li>
+    <li>Distance measured automatically from your step count (manual entry supported)</li>
+    <li>Eye height estimated from your height</li>
+    <li>Switch between meters and feet</li>
+    <li>Available in English, Japanese, Chinese, Korean, Spanish and French</li>
+    <li>No account needed. Measurements never leave your device</li>
   </ul>
 
-  <h2>精度について</h2>
-  <p class="note">表示される高さはおおよその目安です。地面の傾斜、歩幅の個人差、iPhoneを構える高さの推定誤差により、実際の高さとは差が出ます。測量用途にはご利用いただけません。</p>
+  <h2>About accuracy</h2>
+  <p class="note">Results are approximate. Sloped ground, variation in stride length and the estimated height at which you hold your iPhone all affect the result. Not suitable for professional surveying.</p>
 
 <!--chrome:foot-->
 <footer>
   <p>
-    <a href="privacy.html">プライバシーポリシー</a>
-    <a href="terms.html">利用規約</a>
-    <a href="company.html">運営者情報</a>
-    <a href="mailto:fukuidinotech@gmail.com">お問い合わせ</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="company.html">Operator Information</a>
+    <a href="mailto:fukuidinotech@gmail.com">Contact</a>
   </p>
-  <p>タカサ — 建物の高さを測るiOSアプリ</p>
+  <p>Takasa — an iOS app for measuring height</p>
   <p>&copy; 2026 Toru Fukui</p>
 </footer>
 <!--/chrome:foot-->
